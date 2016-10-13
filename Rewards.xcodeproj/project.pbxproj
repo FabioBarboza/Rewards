@@ -11,6 +11,7 @@
 		CB4506FB1DAF1BE3004E231C /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4506FA1DAF1BE3004E231C /* ProfileVC.swift */; };
 		CB56EFD71DAF038A00BABC37 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56EFD61DAF038A00BABC37 /* LoginVC.swift */; };
 		CB56EFD91DAF0AD800BABC37 /* SurveysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56EFD81DAF0AD800BABC37 /* SurveysVC.swift */; };
+		CB6B8ED61DAF30BC00F094D5 /* SurveyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6B8ED51DAF30BC00F094D5 /* SurveyVC.swift */; };
 		CB7AA0331D9DD555007423E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7AA0321D9DD555007423E7 /* AppDelegate.swift */; };
 		CB7AA0381D9DD555007423E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7AA0361D9DD555007423E7 /* Main.storyboard */; };
 		CB7AA03A1D9DD555007423E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB7AA0391D9DD555007423E7 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		CB4506FA1DAF1BE3004E231C /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		CB56EFD61DAF038A00BABC37 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		CB56EFD81DAF0AD800BABC37 /* SurveysVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveysVC.swift; sourceTree = "<group>"; };
+		CB6B8ED51DAF30BC00F094D5 /* SurveyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyVC.swift; sourceTree = "<group>"; };
 		CB7AA02F1D9DD555007423E7 /* Rewards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rewards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7AA0321D9DD555007423E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB7AA0371D9DD555007423E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				CB7AA03E1D9DD555007423E7 /* Info.plist */,
 				CB56EFD61DAF038A00BABC37 /* LoginVC.swift */,
 				CB56EFD81DAF0AD800BABC37 /* SurveysVC.swift */,
+				CB6B8ED51DAF30BC00F094D5 /* SurveyVC.swift */,
 				CB4506FA1DAF1BE3004E231C /* ProfileVC.swift */,
 			);
 			path = Rewards;
@@ -340,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB6B8ED61DAF30BC00F094D5 /* SurveyVC.swift in Sources */,
 				CB4506FB1DAF1BE3004E231C /* ProfileVC.swift in Sources */,
 				CB7AA0331D9DD555007423E7 /* AppDelegate.swift in Sources */,
 				CB56EFD91DAF0AD800BABC37 /* SurveysVC.swift in Sources */,
