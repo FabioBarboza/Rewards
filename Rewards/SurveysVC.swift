@@ -28,6 +28,10 @@ class SurveysVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "SurveySegue", sender: indexPath)
+    }
+    
     @IBAction func showProfile(_ sender: AnyObject) {
         self.performSegue(withIdentifier: "ProfileSegue", sender: sender);
     }

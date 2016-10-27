@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		AA31056B8D03B1D950044ABC /* Pods_Rewards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BBAB0CA797ABC75A51F1D6 /* Pods_Rewards.framework */; };
 		CB4506FB1DAF1BE3004E231C /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4506FA1DAF1BE3004E231C /* ProfileVC.swift */; };
+		CB47FF961DC2B6AF008FE74D /* RWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB47FF951DC2B6AF008FE74D /* RWUser.swift */; };
+		CB47FF981DC2B9EA008FE74D /* RWCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB47FF971DC2B9EA008FE74D /* RWCompany.swift */; };
+		CB47FF9A1DC2BBB8008FE74D /* RWPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB47FF991DC2BBB8008FE74D /* RWPerson.swift */; };
+		CB47FF9C1DC2BCA5008FE74D /* RWSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB47FF9B1DC2BCA5008FE74D /* RWSurvey.swift */; };
 		CB56EFD71DAF038A00BABC37 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56EFD61DAF038A00BABC37 /* LoginVC.swift */; };
 		CB56EFD91DAF0AD800BABC37 /* SurveysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56EFD81DAF0AD800BABC37 /* SurveysVC.swift */; };
 		CB6B8ED61DAF30BC00F094D5 /* SurveyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6B8ED51DAF30BC00F094D5 /* SurveyVC.swift */; };
@@ -41,6 +45,10 @@
 		1FE23724497E6A050075EDCF /* Pods-Rewards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rewards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rewards/Pods-Rewards.debug.xcconfig"; sourceTree = "<group>"; };
 		96BBAB0CA797ABC75A51F1D6 /* Pods_Rewards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rewards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB4506FA1DAF1BE3004E231C /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		CB47FF951DC2B6AF008FE74D /* RWUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWUser.swift; path = Models/RWUser.swift; sourceTree = "<group>"; };
+		CB47FF971DC2B9EA008FE74D /* RWCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWCompany.swift; path = Models/RWCompany.swift; sourceTree = "<group>"; };
+		CB47FF991DC2BBB8008FE74D /* RWPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWPerson.swift; path = Models/RWPerson.swift; sourceTree = "<group>"; };
+		CB47FF9B1DC2BCA5008FE74D /* RWSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWSurvey.swift; path = Models/RWSurvey.swift; sourceTree = "<group>"; };
 		CB56EFD61DAF038A00BABC37 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		CB56EFD81DAF0AD800BABC37 /* SurveysVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveysVC.swift; sourceTree = "<group>"; };
 		CB6B8ED51DAF30BC00F094D5 /* SurveyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyVC.swift; sourceTree = "<group>"; };
@@ -93,6 +101,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB47FF911DC2B51D008FE74D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CB56EFD61DAF038A00BABC37 /* LoginVC.swift */,
+				CB56EFD81DAF0AD800BABC37 /* SurveysVC.swift */,
+				CB6B8ED51DAF30BC00F094D5 /* SurveyVC.swift */,
+				CB4506FA1DAF1BE3004E231C /* ProfileVC.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CB47FF921DC2B550008FE74D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CB47FF951DC2B6AF008FE74D /* RWUser.swift */,
+				CB47FF971DC2B9EA008FE74D /* RWCompany.swift */,
+				CB47FF991DC2BBB8008FE74D /* RWPerson.swift */,
+				CB47FF9B1DC2BCA5008FE74D /* RWSurvey.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		CB7AA0261D9DD555007423E7 = {
 			isa = PBXGroup;
 			children = (
@@ -118,15 +148,13 @@
 		CB7AA0311D9DD555007423E7 /* Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				CB47FF921DC2B550008FE74D /* Models */,
+				CB47FF911DC2B51D008FE74D /* Controllers */,
 				CB7AA0321D9DD555007423E7 /* AppDelegate.swift */,
 				CB7AA0361D9DD555007423E7 /* Main.storyboard */,
 				CB7AA0391D9DD555007423E7 /* Assets.xcassets */,
 				CB7AA03B1D9DD555007423E7 /* LaunchScreen.storyboard */,
 				CB7AA03E1D9DD555007423E7 /* Info.plist */,
-				CB56EFD61DAF038A00BABC37 /* LoginVC.swift */,
-				CB56EFD81DAF0AD800BABC37 /* SurveysVC.swift */,
-				CB6B8ED51DAF30BC00F094D5 /* SurveyVC.swift */,
-				CB4506FA1DAF1BE3004E231C /* ProfileVC.swift */,
 			);
 			path = Rewards;
 			sourceTree = "<group>";
@@ -343,9 +371,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB47FF981DC2B9EA008FE74D /* RWCompany.swift in Sources */,
+				CB47FF9A1DC2BBB8008FE74D /* RWPerson.swift in Sources */,
 				CB6B8ED61DAF30BC00F094D5 /* SurveyVC.swift in Sources */,
 				CB4506FB1DAF1BE3004E231C /* ProfileVC.swift in Sources */,
 				CB7AA0331D9DD555007423E7 /* AppDelegate.swift in Sources */,
+				CB47FF961DC2B6AF008FE74D /* RWUser.swift in Sources */,
+				CB47FF9C1DC2BCA5008FE74D /* RWSurvey.swift in Sources */,
 				CB56EFD91DAF0AD800BABC37 /* SurveysVC.swift in Sources */,
 				CB56EFD71DAF038A00BABC37 /* LoginVC.swift in Sources */,
 			);
