@@ -10,7 +10,8 @@ import UIKit
 import Parse
 
 class RWPerson: PFObject {
-//    var completedSurveys : Array<CompletedSurveys>?
+    
+    var completedSurveys : Array<RWCompletedSurvey>?
     var user : PFUser?
     
 }

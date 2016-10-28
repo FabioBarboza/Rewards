@@ -14,7 +14,7 @@ class RWCompany: PFObject {
     var address : String?
     var geoPoint : PFGeoPoint?
     var cnpj : String?
-//    var surveys : Array<RWSurvey>?
+    var surveys : Array<RWSurvey>?
     var user : PFUser?
     
 }

@@ -10,9 +10,11 @@ import UIKit
 import Parse
 
 class RWSurvey: PFObject {
-    var title : String?
-//    var questions : Array<Question>?
-    var endDate : Date?
-    var reward : String?
-    var showReward : Bool?
+    
+    var title: String?
+    var questions: Array<RWQuestion>?
+    var endDate: Date?
+    var reward: String?
+    var showReward: Bool?
+    
 }

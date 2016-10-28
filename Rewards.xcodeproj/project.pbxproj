@@ -22,6 +22,10 @@
 		CB7AA03D1D9DD555007423E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7AA03B1D9DD555007423E7 /* LaunchScreen.storyboard */; };
 		CB7AA0481D9DD555007423E7 /* RewardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7AA0471D9DD555007423E7 /* RewardsTests.swift */; };
 		CB7AA0531D9DD555007423E7 /* RewardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7AA0521D9DD555007423E7 /* RewardsUITests.swift */; };
+		CB98BE211DC3C21B00843FC6 /* RWQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98BE201DC3C21B00843FC6 /* RWQuestion.swift */; };
+		CB98BE231DC3C47800843FC6 /* RWOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98BE221DC3C47800843FC6 /* RWOption.swift */; };
+		CB98BE251DC3C6AB00843FC6 /* RWAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98BE241DC3C6AB00843FC6 /* RWAnswer.swift */; };
+		CB98BE271DC3C82C00843FC6 /* RWCompletedSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98BE261DC3C82C00843FC6 /* RWCompletedSurvey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,10 @@
 		CB7AA04E1D9DD555007423E7 /* RewardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RewardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7AA0521D9DD555007423E7 /* RewardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsUITests.swift; sourceTree = "<group>"; };
 		CB7AA0541D9DD555007423E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB98BE201DC3C21B00843FC6 /* RWQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWQuestion.swift; path = Models/RWQuestion.swift; sourceTree = "<group>"; };
+		CB98BE221DC3C47800843FC6 /* RWOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWOption.swift; path = Models/RWOption.swift; sourceTree = "<group>"; };
+		CB98BE241DC3C6AB00843FC6 /* RWAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWAnswer.swift; path = Models/RWAnswer.swift; sourceTree = "<group>"; };
+		CB98BE261DC3C82C00843FC6 /* RWCompletedSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWCompletedSurvey.swift; path = Models/RWCompletedSurvey.swift; sourceTree = "<group>"; };
 		FCAF6EE20BFE4964FA2465EE /* Pods-Rewards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rewards.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rewards/Pods-Rewards.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +127,10 @@
 				CB47FF971DC2B9EA008FE74D /* RWCompany.swift */,
 				CB47FF991DC2BBB8008FE74D /* RWPerson.swift */,
 				CB47FF9B1DC2BCA5008FE74D /* RWSurvey.swift */,
+				CB98BE201DC3C21B00843FC6 /* RWQuestion.swift */,
+				CB98BE221DC3C47800843FC6 /* RWOption.swift */,
+				CB98BE241DC3C6AB00843FC6 /* RWAnswer.swift */,
+				CB98BE261DC3C82C00843FC6 /* RWCompletedSurvey.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -373,12 +385,16 @@
 			files = (
 				CB47FF981DC2B9EA008FE74D /* RWCompany.swift in Sources */,
 				CB47FF9A1DC2BBB8008FE74D /* RWPerson.swift in Sources */,
+				CB98BE251DC3C6AB00843FC6 /* RWAnswer.swift in Sources */,
 				CB6B8ED61DAF30BC00F094D5 /* SurveyVC.swift in Sources */,
 				CB4506FB1DAF1BE3004E231C /* ProfileVC.swift in Sources */,
+				CB98BE231DC3C47800843FC6 /* RWOption.swift in Sources */,
 				CB7AA0331D9DD555007423E7 /* AppDelegate.swift in Sources */,
 				CB47FF961DC2B6AF008FE74D /* RWUser.swift in Sources */,
 				CB47FF9C1DC2BCA5008FE74D /* RWSurvey.swift in Sources */,
 				CB56EFD91DAF0AD800BABC37 /* SurveysVC.swift in Sources */,
+				CB98BE271DC3C82C00843FC6 /* RWCompletedSurvey.swift in Sources */,
+				CB98BE211DC3C21B00843FC6 /* RWQuestion.swift in Sources */,
 				CB56EFD71DAF038A00BABC37 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

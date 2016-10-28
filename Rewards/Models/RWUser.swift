@@ -12,11 +12,11 @@ import Parse
 class RWUser: NSObject {
     
     var user : PFUser?
-//    var profilePicture : PFFile
-//    var name : String
-//    var email : String
-//    var username : String
-//    var company : RWCompany
-//    var person : RWPerson
+    var profilePicture : PFFile?
+    var name : String?
+    var email : String?
+    var username : String?
+    var company : RWCompany?
+    var person : RWPerson?
 
 }
