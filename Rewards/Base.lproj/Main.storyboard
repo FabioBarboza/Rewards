@@ -54,6 +54,9 @@
                                     <action selector="doLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UtI-Kx-Vdb"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JtI-8r-vXC">
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -61,6 +64,7 @@
                             <constraint firstItem="vTZ-yd-pIh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="23" id="7zN-cW-JUN"/>
                             <constraint firstItem="ykr-S7-fLB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="141" id="8TG-u1-Be2"/>
                             <constraint firstItem="nrM-ce-8is" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9eH-4A-GEV"/>
+                            <constraint firstItem="JtI-8r-vXC" firstAttribute="top" secondItem="vTZ-yd-pIh" secondAttribute="bottom" constant="33" id="CDs-hl-HZ2"/>
                             <constraint firstItem="J19-0y-oDf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CuQ-Uc-mcu"/>
                             <constraint firstItem="vTZ-yd-pIh" firstAttribute="top" secondItem="InQ-HH-q7v" secondAttribute="bottom" constant="60" id="LRe-Rk-EIG"/>
                             <constraint firstItem="InQ-HH-q7v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QnQ-KQ-KEP"/>
@@ -68,6 +72,7 @@
                             <constraint firstItem="nrM-ce-8is" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="az3-KP-f45"/>
                             <constraint firstItem="ykr-S7-fLB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="23" id="dlM-UY-6sa"/>
                             <constraint firstItem="nrM-ce-8is" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="e9Z-dW-T8Q"/>
+                            <constraint firstItem="JtI-8r-vXC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fDQ-jx-x4S"/>
                             <constraint firstItem="vTZ-yd-pIh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k0R-GC-InX"/>
                             <constraint firstItem="ykr-S7-fLB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kDL-oJ-Eue"/>
                             <constraint firstItem="InQ-HH-q7v" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="23" id="ljj-vN-LAo"/>
@@ -83,6 +88,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="JtI-8r-vXC" id="WjW-Oa-xck"/>
                         <outlet property="btnLogin" destination="vTZ-yd-pIh" id="wqk-j7-WED"/>
                         <outlet property="txtEmail" destination="ykr-S7-fLB" id="OS7-Aa-f7v"/>
                         <outlet property="txtPassword" destination="InQ-HH-q7v" id="Kuh-Xd-AFm"/>
@@ -148,7 +154,7 @@
                                         <rect key="frame" x="0.0" y="371" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JWx-S6-lnC" id="ozU-ym-tgV">
-                                            <frame key="frameInset" width="375" height="69.5"/>
+                                            <frame key="frameInset" width="375" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This row represent the Survey Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PN-Iz-KUe">
@@ -170,7 +176,7 @@
                                         <rect key="frame" x="0.0" y="441" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lD2-Pb-fTd" id="bdW-g1-8p7">
-                                            <frame key="frameInset" width="375" height="59.5"/>
+                                            <frame key="frameInset" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icz-KJ-KDQ">

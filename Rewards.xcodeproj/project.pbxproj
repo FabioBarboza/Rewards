@@ -160,6 +160,7 @@
 		CB7AA0311D9DD555007423E7 /* Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				CB98BE281DC3F42F00843FC6 /* Extensions */,
 				CB47FF921DC2B550008FE74D /* Models */,
 				CB47FF911DC2B51D008FE74D /* Controllers */,
 				CB7AA0321D9DD555007423E7 /* AppDelegate.swift */,
@@ -187,6 +188,13 @@
 				CB7AA0541D9DD555007423E7 /* Info.plist */,
 			);
 			path = RewardsUITests;
+			sourceTree = "<group>";
+		};
+		CB98BE281DC3F42F00843FC6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		E0A88E66143529EAF74E78DB /* Pods */ = {

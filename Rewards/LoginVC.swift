@@ -7,26 +7,37 @@
 //
 
 import UIKit
+import Parse
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var txtEmail: UITextField!
-    @IBOutlet weak var txtPassword: UITextField!
-    @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var txtEmail: UITextField! {
+        didSet {
+            txtEmail.delegate = self
+            txtEmail.layer.borderColor = UIColor.init(red: 98.0/255.0, green: 112.0/255.0, blue: 241.0/255.0, alpha: 0.2).cgColor;
+            txtEmail.layer.borderWidth = 2;
+            txtEmail.layer.cornerRadius = 22;
+        }
+    }
+    @IBOutlet weak var txtPassword: UITextField! {
+        didSet {
+            txtPassword.delegate = self
+            txtPassword.layer.borderColor = UIColor.init(red: 98.0/255.0, green: 112.0/255.0, blue: 241.0/255.0, alpha: 0.2).cgColor;
+            txtPassword.layer.borderWidth = 2;
+            txtPassword.layer.cornerRadius = 22;
+        }
+    }
+    @IBOutlet weak var btnLogin: UIButton! {
+        didSet {
+            btnLogin.clipsToBounds = true;
+            btnLogin.layer.cornerRadius = 22;
+        }
+    }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        txtEmail.layer.borderColor = UIColor.init(red: 98.0/255.0, green: 112.0/255.0, blue: 241.0/255.0, alpha: 0.2).cgColor;
-        txtEmail.layer.borderWidth = 2;
-        txtEmail.layer.cornerRadius = 22;
-        
-        txtPassword.layer.borderColor = UIColor.init(red: 98.0/255.0, green: 112.0/255.0, blue: 241.0/255.0, alpha: 0.2).cgColor;
-        txtPassword.layer.borderWidth = 2;
-        txtPassword.layer.cornerRadius = 22;
-        
-        btnLogin.clipsToBounds = true;
-        btnLogin.layer.cornerRadius = 22;
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +46,20 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func doLogin(_ sender: UIButton) {
+        
+        let user = PFObject(className:"User")
+        user["name"] = "Minha pesquisa"
+        user["reward"] = "Descontos"
+        user["showReward"] = true
+        user.saveInBackground { (success, error) in
+            if success == true {
+                print("funcionou")
+            }
+            else {
+                print("erro")
+            }
+        }
+
         self.performSegue(withIdentifier: "SurveysSegue", sender: sender);
     }
 
