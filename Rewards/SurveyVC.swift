@@ -9,8 +9,12 @@
 import UIKit
 
 class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let questionCellID = "QuestionCell"
+    let optionCellID = "OptionCell"
+    
     @IBOutlet weak var tableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,11 +23,11 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if (indexPath.row == 0) {
-            let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "QuestionCell")! as UITableViewCell
+            let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: questionCellID)! as UITableViewCell
             return cell;
         }
         else {
-            let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "OptionCell")! as UITableViewCell
+            let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: optionCellID)! as UITableViewCell
             return cell;
         }
         

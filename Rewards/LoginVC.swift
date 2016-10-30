@@ -11,66 +11,108 @@ import Parse
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     
+    let borderWidth = 2.0
+    let borderAlpha = 0.2
+    let warningTitle = "Atenção"
+    let emailFieldValidation = "O email precisa ter ao menos 5 letras."
+    let passwordFieldValidation = "A senha precisa ter ao menos 5 letras."
+    let surveySegue = "SurveysSegue"
+    
     @IBOutlet weak var txtEmail: UITextField! {
         didSet {
             txtEmail.delegate = self
-            txtEmail.layer.borderColor = UIColor.init(red: 98.0/255.0, green: 112.0/255.0, blue: 241.0/255.0, alpha: 0.2).cgColor;
-            txtEmail.layer.borderWidth = 2;
-            txtEmail.layer.cornerRadius = 22;
+            txtEmail.layer.borderColor = UIColor.purpleTintColor(alpha: CGFloat(borderAlpha)).cgColor
+            txtEmail.layer.borderWidth = CGFloat(borderWidth)
+            txtEmail.layer.cornerRadius = 22.0
+//            txtEmail.layer.cornerRadius = txtEmail.layer.frame.size.height/2.0
         }
     }
     @IBOutlet weak var txtPassword: UITextField! {
         didSet {
             txtPassword.delegate = self
-            txtPassword.layer.borderColor = UIColor.init(red: 98.0/255.0, green: 112.0/255.0, blue: 241.0/255.0, alpha: 0.2).cgColor;
-            txtPassword.layer.borderWidth = 2;
-            txtPassword.layer.cornerRadius = 22;
+            txtPassword.layer.borderColor = UIColor.purpleTintColor(alpha: CGFloat(borderAlpha)).cgColor
+            txtPassword.layer.borderWidth = CGFloat(borderWidth)
+            txtPassword.layer.cornerRadius = 22.0
+//            txtPassword.layer.cornerRadius = txtPassword.layer.frame.size.height/2.0
         }
     }
     @IBOutlet weak var btnLogin: UIButton! {
         didSet {
-            btnLogin.clipsToBounds = true;
-            btnLogin.layer.cornerRadius = 22;
+            btnLogin.clipsToBounds = true
+            btnLogin.layer.cornerRadius = 22.0
+//            btnLogin.layer.cornerRadius = btnLogin.layer.frame.size.height/2.0
         }
     }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    //MARK: - ViewController Delegates
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    //MARK: - Actions
     
     @IBAction func doLogin(_ sender: UIButton) {
         
-        let user = PFObject(className:"User")
-        user["name"] = "Minha pesquisa"
-        user["reward"] = "Descontos"
-        user["showReward"] = true
-        user.saveInBackground { (success, error) in
-            if success == true {
-                print("funcionou")
-            }
+        guard let email = txtEmail, txtEmail.charactersInRange(5)
             else {
-                print("erro")
-            }
+                let  alertController = UIAlertController.basicMessage(warningTitle, message: emailFieldValidation)
+                self.present(alertController, animated: true, completion: nil)
+                return
+        }
+        guard let password = txtPassword, txtPassword.charactersInRange(5)
+            else {
+                let  alertController = UIAlertController.basicMessage(warningTitle, message: passwordFieldValidation)
+                self.present(alertController, animated: true, completion: nil)
+                return
+        }
+        
+        loading(true)
+        
+        RWUserWS.login(username: email.text!, password: password.text!, success: { (success) in
+            self.loading(false)
+            self.performSegue(withIdentifier: self.surveySegue, sender: sender)
+            }) { (error) in
+                self.loading(false)
         }
 
-        self.performSegue(withIdentifier: "SurveysSegue", sender: sender);
+//        let user = PFObject(className:"User")
+//        user["email"] = txtEmail
+//        user["showReward"] = true
+//        user.saveInBackground { (success, error) in
+//            if success == true {
+//                print("funcionou")
+//            }
+//            else {
+//                print("erro")
+//            }
+//        }
+
+    }
+    
+    func loading(_ enable: Bool) {
+        btnLogin.isUserInteractionEnabled = !enable
+        txtPassword.isUserInteractionEnabled = !enable
+        txtEmail.isUserInteractionEnabled = !enable
+        
+        if enable == true {
+            self.activityIndicator.startAnimating()
+        } else {
+            self.activityIndicator.stopAnimating()
+        }
     }
 
-    /*
-     MARK: - Navigation
-
-     In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         Get the new view controller using segue.destinationViewController.
-         Pass the selected object to the new view controller.
+    //MARK: - Textfield Delegates
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
-    */
 
 }
