@@ -9,12 +9,17 @@
 import UIKit
 import Parse
 
-class RWCompany: PFObject {
+class RWCompany: PFObject, PFSubclassing {
 
-    var address : String?
-    var geoPoint : PFGeoPoint?
-    var cnpj : String?
-    var surveys : Array<RWSurvey>?
-    var user : PFUser?
+    @NSManaged var address: String?
+    @NSManaged var geoPoint: PFGeoPoint?
+    @NSManaged var cnpj: String?
+    @NSManaged var surveys: Array<RWSurvey>?
+    @NSManaged var user: PFUser?
+    @NSManaged var companyName: String?
+    
+    public static func parseClassName() -> String {
+        return "Company"
+    }
     
 }

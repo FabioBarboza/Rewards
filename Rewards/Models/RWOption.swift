@@ -9,10 +9,14 @@
 import UIKit
 import Parse
 
-class RWOption: PFObject {
+class RWOption: PFObject, PFSubclassing {
 
-    var question: RWQuestion?
-    var label: String?
-    var order: Int?
+    @NSManaged var question: RWQuestion?
+    @NSManaged var label: String?
+    @NSManaged var order: NSNumber?
+    
+    public static func parseClassName() -> String {
+        return "Option"
+    }
     
 }

@@ -11,8 +11,12 @@ import Parse
 
 class RWCompletedSurvey: PFObject {
     
-    var usedReward: Bool?
-    var person: RWPerson?
-    var survey: RWSurvey?
-
+    @NSManaged var usedReward: Bool
+    @NSManaged var person: RWPerson?
+    @NSManaged var survey: RWSurvey?
+    
+    public static func parseClassName() -> String {
+        return "CompletedSurvey"
+    }
+    
 }

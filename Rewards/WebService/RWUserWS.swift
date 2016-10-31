@@ -9,12 +9,12 @@
 import UIKit
 import Parse
 
-typealias SUCCESS = (_ result: Bool) -> ()
-typealias FAILURE = (_ error: NSError) -> ()
+typealias LOGIN_SUCCESS = (_ result: Bool) -> ()
+typealias LOGIN_FAILURE = (_ error: NSError) -> ()
 
 class RWUserWS: NSObject {
     
-    static func login(username: String, password: String, success: @escaping SUCCESS, failure: @escaping FAILURE) {
+    static func login(username: String, password: String, success: @escaping LOGIN_SUCCESS, failure: @escaping LOGIN_FAILURE) {
         PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
             if user != nil {
                 success(true)

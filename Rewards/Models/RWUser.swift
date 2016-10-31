@@ -9,14 +9,18 @@
 import UIKit
 import Parse
 
-class RWUser: NSObject {
+class RWUser: NSObject, PFSubclassing {
     
-    var user : PFUser?
-    var profilePicture : PFFile?
-    var name : String?
-    var email : String?
-    var username : String?
-    var company : RWCompany?
-    var person : RWPerson?
-
+    @NSManaged var user: PFUser?
+    @NSManaged var profilePicture: PFFile?
+    @NSManaged var name: String?
+    @NSManaged var email: String?
+    @NSManaged var username: String?
+    @NSManaged var company: RWCompany?
+    @NSManaged var person: RWPerson?
+    
+    public static func parseClassName() -> String {
+        return "User"
+    }
+    
 }

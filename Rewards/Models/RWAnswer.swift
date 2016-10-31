@@ -10,11 +10,15 @@
 import UIKit
 import Parse
 
-class RWAnswer: PFObject {
+class RWAnswer: PFObject, PFSubclassing {
 
-    var survey: RWSurvey?
-    var options: Array<RWOption>?
-    var person: RWPerson?
-    var question: RWQuestion?
+    @NSManaged var survey: RWSurvey?
+    @NSManaged var options: Array<RWOption>?
+    @NSManaged var person: RWPerson?
+    @NSManaged var question: RWQuestion?
+    
+    public static func parseClassName() -> String {
+        return "Answer"
+    }
     
 }

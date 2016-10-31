@@ -28,6 +28,8 @@
 		CB98BE271DC3C82C00843FC6 /* RWCompletedSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98BE261DC3C82C00843FC6 /* RWCompletedSurvey.swift */; };
 		CB9C1F2B1DC44B4E0033AD26 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C1F2A1DC44B4E0033AD26 /* Extension.swift */; };
 		CBB2B1DD1DC586430087B1FE /* RWUserWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2B1DC1DC586430087B1FE /* RWUserWS.swift */; };
+		CBB2B1E01DC6A31F0087B1FE /* RWSurveysWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2B1DF1DC6A31F0087B1FE /* RWSurveysWS.swift */; };
+		CBB2B1E31DC6D60F0087B1FE /* RWSurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2B1E21DC6D60F0087B1FE /* RWSurveyCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		CB9C1F2A1DC44B4E0033AD26 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extension.swift; path = Extensions/Extension.swift; sourceTree = "<group>"; };
 		CBB2B1DC1DC586430087B1FE /* RWUserWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWUserWS.swift; path = WebService/RWUserWS.swift; sourceTree = "<group>"; };
 		CBB2B1DE1DC58EC60087B1FE /* Rewards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rewards.entitlements; sourceTree = "<group>"; };
+		CBB2B1DF1DC6A31F0087B1FE /* RWSurveysWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWSurveysWS.swift; path = WebService/RWSurveysWS.swift; sourceTree = "<group>"; };
+		CBB2B1E21DC6D60F0087B1FE /* RWSurveyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWSurveyCell.swift; path = "Custom Classes/RWSurveyCell.swift"; sourceTree = "<group>"; };
 		FCAF6EE20BFE4964FA2465EE /* Pods-Rewards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rewards.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rewards/Pods-Rewards.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +169,7 @@
 		CB7AA0311D9DD555007423E7 /* Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				CBB2B1E11DC6D5DF0087B1FE /* Custom Classes */,
 				CBB2B1DE1DC58EC60087B1FE /* Rewards.entitlements */,
 				CB9C1F2C1DC4DA3F0033AD26 /* WebService */,
 				CB98BE281DC3F42F00843FC6 /* Extensions */,
@@ -209,8 +214,17 @@
 			isa = PBXGroup;
 			children = (
 				CBB2B1DC1DC586430087B1FE /* RWUserWS.swift */,
+				CBB2B1DF1DC6A31F0087B1FE /* RWSurveysWS.swift */,
 			);
 			name = WebService;
+			sourceTree = "<group>";
+		};
+		CBB2B1E11DC6D5DF0087B1FE /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CBB2B1E21DC6D60F0087B1FE /* RWSurveyCell.swift */,
+			);
+			name = "Custom Classes";
 			sourceTree = "<group>";
 		};
 		E0A88E66143529EAF74E78DB /* Pods */ = {
@@ -413,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBB2B1E01DC6A31F0087B1FE /* RWSurveysWS.swift in Sources */,
 				CB47FF981DC2B9EA008FE74D /* RWCompany.swift in Sources */,
 				CB47FF9A1DC2BBB8008FE74D /* RWPerson.swift in Sources */,
 				CB98BE251DC3C6AB00843FC6 /* RWAnswer.swift in Sources */,
@@ -421,6 +436,7 @@
 				CB98BE231DC3C47800843FC6 /* RWOption.swift in Sources */,
 				CB7AA0331D9DD555007423E7 /* AppDelegate.swift in Sources */,
 				CBB2B1DD1DC586430087B1FE /* RWUserWS.swift in Sources */,
+				CBB2B1E31DC6D60F0087B1FE /* RWSurveyCell.swift in Sources */,
 				CB47FF961DC2B6AF008FE74D /* RWUser.swift in Sources */,
 				CB47FF9C1DC2BCA5008FE74D /* RWSurvey.swift in Sources */,
 				CB9C1F2B1DC44B4E0033AD26 /* Extension.swift in Sources */,

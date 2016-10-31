@@ -114,7 +114,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mfm-Bn-UK5">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="YDc-N7-wsa">
-                                    <rect key="frame" x="0.0" y="64" width="375" height="279"/>
+                                    <rect key="frame" x="0.0" y="64" width="1000" height="279"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cinemark" translatesAutoresizingMaskIntoConstraints="NO" id="3mb-SK-YNe"/>
@@ -128,7 +128,7 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="dOC-EG-CxP">
-                                    <rect key="frame" x="0.0" y="501" width="375" height="171"/>
+                                    <rect key="frame" x="0.0" y="501" width="1000" height="171"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yov-8c-rY1">
@@ -151,10 +151,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" rowHeight="70" id="JWx-S6-lnC">
-                                        <rect key="frame" x="0.0" y="371" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="371" width="1000" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JWx-S6-lnC" id="ozU-ym-tgV">
-                                            <frame key="frameInset" width="375" height="69"/>
+                                            <frame key="frameInset" width="1000" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This row represent the Survey Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PN-Iz-KUe">
@@ -173,10 +173,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OptionCell" rowHeight="60" id="lD2-Pb-fTd">
-                                        <rect key="frame" x="0.0" y="441" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="441" width="1000" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lD2-Pb-fTd" id="bdW-g1-8p7">
-                                            <frame key="frameInset" width="375" height="59"/>
+                                            <frame key="frameInset" width="1000" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icz-KJ-KDQ">
@@ -242,7 +242,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="170" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hcd-Rn-Nbw">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SurveyCell" rowHeight="170" id="k6D-bo-UVm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SurveyCell" rowHeight="170" id="k6D-bo-UVm" customClass="RWSurveyCell" customModule="Rewards" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k6D-bo-UVm" id="7yv-a1-SLk">
@@ -297,6 +297,13 @@
                                                 <constraint firstItem="nYc-KG-hjP" firstAttribute="leading" secondItem="7yv-a1-SLk" secondAttribute="leadingMargin" constant="15" id="zuQ-I0-xk6"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="surveyDeadline" destination="nYc-KG-hjP" id="7mO-XG-OmV"/>
+                                            <outlet property="surveyImage" destination="KwE-Pz-RG1" id="hDs-jk-Ig1"/>
+                                            <outlet property="surveyLocation" destination="7IH-nY-Gm8" id="eeY-ws-PXC"/>
+                                            <outlet property="surveyReward" destination="NKl-Do-bM2" id="vbz-iX-MkW"/>
+                                            <outlet property="surveyTitle" destination="etN-RQ-3Ei" id="b2v-Dw-wJ2"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -353,7 +360,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="170" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zCs-Lh-sbN">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="uPL-Xq-mln">
-                                    <rect key="frame" x="0.0" y="64" width="375" height="187"/>
+                                    <rect key="frame" x="0.0" y="64" width="1000" height="187"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Da6-QH-0qt"/>
@@ -384,10 +391,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SurveyCell" rowHeight="170" id="b8h-9J-o0T">
-                                        <rect key="frame" x="0.0" y="279" width="375" height="170"/>
+                                        <rect key="frame" x="0.0" y="279" width="1000" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b8h-9J-o0T" id="ctW-yH-yme">
-                                            <frame key="frameInset" width="375" height="170"/>
+                                            <frame key="frameInset" width="1000" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="McDonalds" translatesAutoresizingMaskIntoConstraints="NO" id="Pzx-CP-lna">

@@ -16,20 +16,46 @@ class SurveysVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     let surveySegue = "SurveySegue"
     let profileSegue = "ProfileSegue"
     
-    @IBOutlet weak var tableView: UITableView!
+    var surveyList = NSMutableArray()
+    
+    @IBOutlet weak var tableView: UITableView! {
+        didSet{
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+            self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = navTitle
+        
+        loadObjects()
+    }
+    
+    func loadObjects() {
+        
+        RWSurveysWS.surveys(success: { (list) in
+            self.surveyList = NSMutableArray(array: list)
+            self.tableView.reloadData()
+        }) { (error) in
+            
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5;
+        return surveyList.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: surveyCellID)! as UITableViewCell
+        let cell:RWSurveyCell = self.tableView.dequeueReusableCell(withIdentifier: surveyCellID)! as! RWSurveyCell
+        let survey = surveyList[indexPath.row] as! RWSurvey
+        
+        cell.surveyTitle.text = survey.title
+        cell.surveyLocation.text = survey.company?.address
+        cell.surveyReward.text = survey.reward
         
         return cell
     }

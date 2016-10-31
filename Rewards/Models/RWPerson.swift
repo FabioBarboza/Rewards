@@ -9,9 +9,13 @@
 import UIKit
 import Parse
 
-class RWPerson: PFObject {
+class RWPerson: PFObject, PFSubclassing {
     
-    var completedSurveys : Array<RWCompletedSurvey>?
-    var user : PFUser?
+    @NSManaged var completedSurveys: Array<RWCompletedSurvey>?
+    @NSManaged var user: PFUser?
+    
+    public static func parseClassName() -> String {
+        return "Person"
+    }
     
 }

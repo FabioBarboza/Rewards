@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initialize(with: configuration)
         
+        RWSurvey.registerSubclass()
+        RWCompany.registerSubclass()
+        
         return true
     }
 
