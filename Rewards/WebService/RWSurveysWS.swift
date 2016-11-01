@@ -28,7 +28,27 @@ class RWSurveysWS: NSObject {
                 }
                 success(surveys)
             } else {
-                
+                failure(error as! NSError)
+             }
+        }
+    }
+    
+    static func questions(with surveyID: String, success: @escaping SURVEY_SUCCESS, failure: @escaping SURVEY_FAILURE) {
+        
+        let innerQuery = PFQuery(className:"Survey")
+        innerQuery.whereKey("objectId", equalTo: surveyID)
+        let query = PFQuery(className:"Question")
+        query.whereKey("survey", matchesQuery: innerQuery)
+        query.findObjectsInBackground { (list, error) in
+            if error == nil {
+                let questions = NSMutableArray()
+                for object in list! {
+                    let question = object as! RWQuestion
+                    questions.add(question)
+                }
+                success(questions)
+            } else {
+                failure(error as! NSError)
             }
         }
     }

@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class RWCompletedSurvey: PFObject {
+class RWCompletedSurvey: PFObject, PFSubclassing {
     
     @NSManaged var usedReward: Bool
     @NSManaged var person: RWPerson?

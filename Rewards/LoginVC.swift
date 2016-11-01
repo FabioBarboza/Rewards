@@ -48,7 +48,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     //MARK: - ViewController Delegates
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
     
     override func viewDidLoad() {
@@ -63,13 +63,13 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         guard let email = txtEmail, txtEmail.charactersInRange(5)
             else {
                 let  alertController = UIAlertController.basicMessage(warningTitle, message: emailFieldValidation)
-                self.present(alertController, animated: true, completion: nil)
+                present(alertController, animated: true, completion: nil)
                 return
         }
         guard let password = txtPassword, txtPassword.charactersInRange(5)
             else {
                 let  alertController = UIAlertController.basicMessage(warningTitle, message: passwordFieldValidation)
-                self.present(alertController, animated: true, completion: nil)
+                present(alertController, animated: true, completion: nil)
                 return
         }
         
@@ -102,9 +102,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         txtEmail.isUserInteractionEnabled = !enable
         
         if enable == true {
-            self.activityIndicator.startAnimating()
+            activityIndicator.startAnimating()
         } else {
-            self.activityIndicator.stopAnimating()
+            activityIndicator.stopAnimating()
         }
     }
 

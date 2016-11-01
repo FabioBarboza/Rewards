@@ -24,6 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         RWSurvey.registerSubclass()
         RWCompany.registerSubclass()
+        RWQuestion.registerSubclass()
+        RWAnswer.registerSubclass()
+        RWCompletedSurvey.registerSubclass()
+        RWPerson.registerSubclass()
+        RWOption.registerSubclass()
         
         return true
     }
