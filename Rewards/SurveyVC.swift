@@ -15,9 +15,13 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let optionCellID = "OptionCell"
     let warningTitle = "Reload the list"
     let questionQueryError = "Occured an error trying to get the questions"
+    let dataLoaderSegue = "dataLoaderSegue"
     
     var survey: RWSurvey?
     var questionList = NSMutableArray()
+    var optionList = NSMutableArray()
+    var currentQuestion = 0
+    var loaded = false
     
     @IBOutlet weak var surveyDeadline: UILabel! {
         didSet {
@@ -58,8 +62,36 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = navTitle
-        
-        loadObjects()
+
+        loadOptions(to: currentQuestion)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if loaded == true {
+            loadOptions(to: currentQuestion)
+        }
+    }
+    
+    func loadOptions(to question: Int) {
+        if questionList.count == 0 {
+            loadObjects()
+        } else {
+            if let question = questionList[currentQuestion] as? RWQuestion {
+                loading(true)
+                RWSurveysWS.options(with: question.objectId!, success: { (list) in
+                    
+                    self.optionList.removeAllObjects()
+                    self.optionList = list
+                    self.tableView.reloadData()
+                    self.loading(false)
+
+                }, failure: { (error) in
+                    self.loading(false)
+                })
+            } else {
+                
+            }
+        }
     }
     
     //MARK: - Data
@@ -73,17 +105,8 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func loadObjects() {
-        loading(true)
-        RWSurveysWS.questions(with: (survey?.objectId)!, success: { (list) in
-            self.questionList = NSMutableArray(array: list)
-            self.tableView.reloadData()
-            self.loading(false)
-        }) { (error) in
-            let alertController = UIAlertController.basicMessage(self.warningTitle, message: self.questionQueryError)
-            self.present(alertController, animated: true, completion: nil)
-            self.loading(false)
-        }
         
+        self.performSegue(withIdentifier: dataLoaderSegue, sender: nil)
     }
     
     //MARK: - Tableview
@@ -93,7 +116,7 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if (indexPath.row == 0) {
             let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: questionCellID)! as UITableViewCell
             
-            let question = questionList[indexPath.row] as! RWQuestion
+            let question = questionList[currentQuestion] as! RWQuestion
             let title = cell.viewWithTag(1) as! UILabel
             title.text = question.label
             
@@ -101,19 +124,23 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         else {
             let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: optionCellID)! as UITableViewCell
+            
+            let option = optionList[indexPath.row - 1] as! RWOption
+            let title = cell.viewWithTag(1) as! UILabel
+            title.text = option.label
+            
             return cell;
         }
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = 0
-        if questionList.count == 0 {
+        
+        if optionList.count == 0 {
             return 0
         } else {
-            count += 1
+            return optionList.count + 1
         }
-        return count + 4
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -124,5 +151,15 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func nextQuestionAction(_ sender: AnyObject) {
         navigationController!.popViewController(animated: true);
+    }
+    
+    //MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == dataLoaderSegue {
+            if let destinationVC = segue.destination as? DataLoaderVC {
+                destinationVC.surveyVC = self
+            }
+        }
     }
 }

@@ -14,7 +14,8 @@ typealias SURVEY_FAILURE = (_ error: NSError) -> ()
 
 class RWSurveysWS: NSObject {
     
-    static func surveys(success: @escaping SURVEY_SUCCESS, failure: @escaping SURVEY_FAILURE) {
+    static func surveys(success: @escaping SURVEY_SUCCESS,
+                        failure: @escaping SURVEY_FAILURE) {
         
         let query = PFQuery(className:"Survey")
         query.includeKey("company")
@@ -33,7 +34,9 @@ class RWSurveysWS: NSObject {
         }
     }
     
-    static func questions(with surveyID: String, success: @escaping SURVEY_SUCCESS, failure: @escaping SURVEY_FAILURE) {
+    static func questions(with surveyID: String,
+                          success: @escaping SURVEY_SUCCESS,
+                          failure: @escaping SURVEY_FAILURE) {
         
         let innerQuery = PFQuery(className:"Survey")
         innerQuery.whereKey("objectId", equalTo: surveyID)
@@ -47,6 +50,28 @@ class RWSurveysWS: NSObject {
                     questions.add(question)
                 }
                 success(questions)
+            } else {
+                failure(error as! NSError)
+            }
+        }
+    }
+    
+    static func options(with questionID: String,
+                        success: @escaping SURVEY_SUCCESS,
+                        failure: @escaping SURVEY_FAILURE) {
+        
+        let innerQuery = PFQuery(className:"Question")
+        innerQuery.whereKey("objectId", equalTo: questionID)
+        let query = PFQuery(className: "Option")
+        query.whereKey("question", matchesQuery: innerQuery)
+        query.findObjectsInBackground { (list, error) in
+            if error == nil {
+                let options = NSMutableArray()
+                for object in list! {
+                    let option = object as! RWOption
+                    options.add(option)
+                }
+                success(options)
             } else {
                 failure(error as! NSError)
             }
