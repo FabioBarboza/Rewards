@@ -18,5 +18,4 @@ class RWQuestion: PFObject, PFSubclassing {
     public static func parseClassName() -> String {
         return "Question"
     }
-    
 }

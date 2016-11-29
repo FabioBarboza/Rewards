@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AA31056B8D03B1D950044ABC /* Pods_Rewards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BBAB0CA797ABC75A51F1D6 /* Pods_Rewards.framework */; };
 		CB0A287B1DD40B1000E5BC36 /* DataLoaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0A287A1DD40B1000E5BC36 /* DataLoaderVC.swift */; };
+		CB3FB4EC1DEDB2C4000C9B42 /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3FB4EB1DEDB2C4000C9B42 /* OptionCell.swift */; };
+		CB3FB4EE1DEDBEEB000C9B42 /* CompletedSurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3FB4ED1DEDBEEB000C9B42 /* CompletedSurveyCell.swift */; };
 		CB4506FB1DAF1BE3004E231C /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4506FA1DAF1BE3004E231C /* ProfileVC.swift */; };
 		CB47FF961DC2B6AF008FE74D /* RWUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB47FF951DC2B6AF008FE74D /* RWUser.swift */; };
 		CB47FF981DC2B9EA008FE74D /* RWCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB47FF971DC2B9EA008FE74D /* RWCompany.swift */; };
@@ -55,6 +57,8 @@
 		1FE23724497E6A050075EDCF /* Pods-Rewards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rewards.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rewards/Pods-Rewards.debug.xcconfig"; sourceTree = "<group>"; };
 		96BBAB0CA797ABC75A51F1D6 /* Pods_Rewards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rewards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0A287A1DD40B1000E5BC36 /* DataLoaderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoaderVC.swift; sourceTree = "<group>"; };
+		CB3FB4EB1DEDB2C4000C9B42 /* OptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionCell.swift; path = "Custom Classes/OptionCell.swift"; sourceTree = "<group>"; };
+		CB3FB4ED1DEDBEEB000C9B42 /* CompletedSurveyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompletedSurveyCell.swift; path = "Custom Classes/CompletedSurveyCell.swift"; sourceTree = "<group>"; };
 		CB4506FA1DAF1BE3004E231C /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		CB47FF951DC2B6AF008FE74D /* RWUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWUser.swift; path = Models/RWUser.swift; sourceTree = "<group>"; };
 		CB47FF971DC2B9EA008FE74D /* RWCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWCompany.swift; path = Models/RWCompany.swift; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				CBB2B1E21DC6D60F0087B1FE /* RWSurveyCell.swift */,
+				CB3FB4EB1DEDB2C4000C9B42 /* OptionCell.swift */,
+				CB3FB4ED1DEDBEEB000C9B42 /* CompletedSurveyCell.swift */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB3FB4EC1DEDB2C4000C9B42 /* OptionCell.swift in Sources */,
 				CBB2B1E01DC6A31F0087B1FE /* RWSurveysWS.swift in Sources */,
 				CB47FF981DC2B9EA008FE74D /* RWCompany.swift in Sources */,
 				CBFAC3511DED432A0017B0A5 /* SurveyCompletionVC.swift in Sources */,
@@ -451,6 +458,7 @@
 				CB98BE271DC3C82C00843FC6 /* RWCompletedSurvey.swift in Sources */,
 				CB98BE211DC3C21B00843FC6 /* RWQuestion.swift in Sources */,
 				CB56EFD71DAF038A00BABC37 /* LoginVC.swift in Sources */,
+				CB3FB4EE1DEDBEEB000C9B42 /* CompletedSurveyCell.swift in Sources */,
 				CB0A287B1DD40B1000E5BC36 /* DataLoaderVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

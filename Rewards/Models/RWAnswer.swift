@@ -23,16 +23,20 @@ class RWAnswer: PFObject, PFSubclassing {
     
     public static func store(with survey: RWSurvey,
               options: RWOption,
-              person: RWPerson,
               question: RWQuestion) {
         
-        let answer = PFObject(className:RWAnswer.parseClassName())
-        answer["survey"] = survey
-        answer["options"] = options
-        answer["person"] = person
-        answer["question"] = question
-        
-        answer.saveInBackground()
+        let query = PFQuery(className: RWPerson.parseClassName())
+        query.whereKey("user", equalTo: PFUser.current() as Any)
+        query.limit = 1
+        query.findObjectsInBackground { (object, error) in
+            if object != nil {
+                let answer = PFObject(className: parseClassName())
+                answer["survey"] = survey
+                answer["options"] = options
+                answer["person"] = object?.first
+                answer["question"] = question
+                answer.saveInBackground()
+            }
+        }
     }
-    
 }

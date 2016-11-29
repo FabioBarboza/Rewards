@@ -12,13 +12,28 @@ class SurveyCompletionVC: UIViewController {
 
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var complete: UIButton!
+    var survey: RWSurvey?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        activityIndicator.startAnimating()
+        complete.isEnabled = false
+        
+        guard let survey = survey else {
+            return
+        }
+        
+        RWCompletedSurvey.store(survey: survey) { success in
+            
+            self.activityIndicator.stopAnimating()
+            self.complete.isEnabled = true
+            self.codeLabel.text = success
+        }
     }
-    @IBOutlet weak var complete: UIButton!
     
     @IBAction func completeAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }

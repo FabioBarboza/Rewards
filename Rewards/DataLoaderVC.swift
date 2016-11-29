@@ -14,7 +14,7 @@ class DataLoaderVC: UIViewController {
     @IBOutlet weak var btnStart: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     let loadingTitle = "Carregando dados da pesquisa"
-    let loadedTitle = "A pesquisa está pronta"
+    let loadedTitle = "A pesquisa esta pronta"
     var survey: RWSurvey?
     
     override func viewDidLoad() {

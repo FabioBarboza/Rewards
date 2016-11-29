@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -24,6 +23,7 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var answers = [RWAnswer]()
     var selectedOption: RWOption?
+    var lastIndexPath: IndexPath?
     
     @IBOutlet weak var nextButton: UIButton!
     
@@ -72,7 +72,7 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 return
         }
         
-        if questionNumber + 1 == questions.count {
+        if questionNumber + 1 >= questions.count {
             nextButton.setTitle("ENVIAR", for: .normal)
         } else {
             nextButton.setTitle("PRÓXIMA PERGUNTA", for: .normal)
@@ -87,7 +87,6 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.optionList = list
                 self.tableView.reloadData()
                 self.loading(false)
-                self.currentQuestion = questionNumber
                 self.selectedOption = nil
                 
             }, failure: { (error) in
@@ -127,11 +126,10 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return cell;
         }
         else {
-            let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: optionCellID)! as UITableViewCell
+            let cell: OptionCell = tableView.dequeueReusableCell(withIdentifier: optionCellID) as! OptionCell
             
             let option = optionList[indexPath.row - 1] as! RWOption
-            let title = cell.viewWithTag(1) as! UILabel
-            title.text = option.label
+            cell.optionTitle.text = option.label
             
             return cell;
         }
@@ -148,8 +146,16 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedOption = optionList[indexPath.row - 1] as? RWOption
-        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if lastIndexPath != nil {
+            tableView.deselectRow(at: lastIndexPath!, animated: true)
+        }
+        
+        if indexPath.row > 0 {
+            selectedOption = optionList[indexPath.row - 1] as? RWOption
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            lastIndexPath = indexPath
+        }
     }
     
     //MARK: - Actions
@@ -159,30 +165,29 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func nextQuestionAction(_ sender: AnyObject) {
+        if selectedOption == nil { return }
         
         guard let survey = survey,
             let questions = survey.questions,
             let option = selectedOption else {
                 return
         }
-        
-        let user = PFUser.current()
+
         RWAnswer.store(with: survey,
                        options: option,
-                       person: RWPerson(className: RWPerson.parseClassName(),
-                                        dictionary: ["person": user?.objectId as Any]),
                        question: questions[currentQuestion])
         
+        currentQuestion+=1
         if currentQuestion == questions.count {
             performSegue(withIdentifier: "SurveyCompletion", sender: nil)
         } else {
-            loadOptions(to: currentQuestion + 1)
+            loadOptions(to: currentQuestion)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SurveyCompletion" {
-            let surveyVC = segue.destination as! SurveyVC
+            let surveyVC = segue.destination as! SurveyCompletionVC
             surveyVC.survey = survey
         }
     }
