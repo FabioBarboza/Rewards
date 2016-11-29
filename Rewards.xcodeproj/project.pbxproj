@@ -25,6 +25,10 @@
 		CB7AA03D1D9DD555007423E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB7AA03B1D9DD555007423E7 /* LaunchScreen.storyboard */; };
 		CB7AA0481D9DD555007423E7 /* RewardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7AA0471D9DD555007423E7 /* RewardsTests.swift */; };
 		CB7AA0531D9DD555007423E7 /* RewardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7AA0521D9DD555007423E7 /* RewardsUITests.swift */; };
+		CB9684551DEE403F0071C430 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9684511DEE403F0071C430 /* Bolts.framework */; };
+		CB9684561DEE403F0071C430 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9684521DEE403F0071C430 /* FBSDKCoreKit.framework */; };
+		CB9684571DEE403F0071C430 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9684531DEE403F0071C430 /* FBSDKLoginKit.framework */; };
+		CB9684581DEE403F0071C430 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9684541DEE403F0071C430 /* FBSDKShareKit.framework */; };
 		CB98BE211DC3C21B00843FC6 /* RWQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98BE201DC3C21B00843FC6 /* RWQuestion.swift */; };
 		CB98BE231DC3C47800843FC6 /* RWOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98BE221DC3C47800843FC6 /* RWOption.swift */; };
 		CB98BE251DC3C6AB00843FC6 /* RWAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98BE241DC3C6AB00843FC6 /* RWAnswer.swift */; };
@@ -79,6 +83,10 @@
 		CB7AA04E1D9DD555007423E7 /* RewardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RewardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7AA0521D9DD555007423E7 /* RewardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsUITests.swift; sourceTree = "<group>"; };
 		CB7AA0541D9DD555007423E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB9684511DEE403F0071C430 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		CB9684521DEE403F0071C430 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		CB9684531DEE403F0071C430 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		CB9684541DEE403F0071C430 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		CB98BE201DC3C21B00843FC6 /* RWQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWQuestion.swift; path = Models/RWQuestion.swift; sourceTree = "<group>"; };
 		CB98BE221DC3C47800843FC6 /* RWOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWOption.swift; path = Models/RWOption.swift; sourceTree = "<group>"; };
 		CB98BE241DC3C6AB00843FC6 /* RWAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWAnswer.swift; path = Models/RWAnswer.swift; sourceTree = "<group>"; };
@@ -98,6 +106,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA31056B8D03B1D950044ABC /* Pods_Rewards.framework in Frameworks */,
+				CB9684561DEE403F0071C430 /* FBSDKCoreKit.framework in Frameworks */,
+				CB9684581DEE403F0071C430 /* FBSDKShareKit.framework in Frameworks */,
+				CB9684571DEE403F0071C430 /* FBSDKLoginKit.framework in Frameworks */,
+				CB9684551DEE403F0071C430 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +133,10 @@
 		841F1084373105D9544AEE48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB9684511DEE403F0071C430 /* Bolts.framework */,
+				CB9684521DEE403F0071C430 /* FBSDKCoreKit.framework */,
+				CB9684531DEE403F0071C430 /* FBSDKLoginKit.framework */,
+				CB9684541DEE403F0071C430 /* FBSDKShareKit.framework */,
 				96BBAB0CA797ABC75A51F1D6 /* Pods_Rewards.framework */,
 			);
 			name = Frameworks;
@@ -612,6 +628,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rewards/Rewards.entitlements;
 				DEVELOPMENT_TEAM = W9C5RFHWCR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Rewards/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pucrs.Rewards;
@@ -627,6 +647,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rewards/Rewards.entitlements;
 				DEVELOPMENT_TEAM = W9C5RFHWCR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Rewards/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pucrs.Rewards;

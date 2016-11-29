@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKShareKit
 
 class SurveyCompletionVC: UIViewController {
 
@@ -31,6 +33,15 @@ class SurveyCompletionVC: UIViewController {
             self.complete.isEnabled = true
             self.codeLabel.text = success
         }
+        
+        let content = FBSDKShareLinkContent()
+        content.contentURL = NSURL(string: "http://www.kobe.io") as URL!
+        content.contentTitle = "Rewards - Pesquisas inteligentes"
+        content.contentDescription = "Responda pesquisas rápidas e ganhe promoções exclusivas nas suas lojas e restaurantes favoritos."
+        let shareButton = FBSDKShareButton()
+        shareButton.shareContent = content;
+        shareButton.center = view.center;
+        view.addSubview(shareButton)
     }
     
     @IBAction func completeAction(_ sender: Any) {
