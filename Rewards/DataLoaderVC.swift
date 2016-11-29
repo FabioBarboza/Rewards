@@ -10,28 +10,39 @@ import UIKit
 
 class DataLoaderVC: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var btnStart: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    weak var surveyVC: SurveyVC!
+    let loadingTitle = "Carregando dados da pesquisa"
+    let loadedTitle = "A pesquisa está pronta"
+    var survey: RWSurvey?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        btnStart.isEnabled = false
+        activityIndicator.startAnimating()
+        titleLabel.text = loadingTitle
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         loadData()
     }
     
     func loadData() {
-        self.btnStart.isEnabled = false
-        self.activityIndicator.startAnimating()
+        btnStart.isEnabled = false
+        activityIndicator.startAnimating()
         
-        RWSurveysWS.questions(with: (surveyVC.survey?.objectId)!, success: { (list) in
-            self.surveyVC.questionList = NSMutableArray(array: list)
+        RWSurveysWS.questions(with: (survey?.objectId)!, success: { (list) in
             
+            self.survey?.questions = list
             self.btnStart.isEnabled = true
             self.activityIndicator.stopAnimating()
+            self.titleLabel.text = self.loadedTitle
+            
         }) { (error) in
-            let alertController = UIAlertController.basicMessage(self.surveyVC.warningTitle,
-                                                                 message: self.surveyVC.questionQueryError)
+            let alertController = UIAlertController.basicMessage("Error",
+                                                                 message: "Occured an error trying to get the questions")
             self.present(alertController,
                          animated: true,
                          completion: nil)
@@ -42,8 +53,17 @@ class DataLoaderVC: UIViewController {
     }
     
     @IBAction func startSurvey(_ sender: Any) {
-        self.surveyVC.loaded = true
-        self.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "QuestionsSegue", sender: nil)
     }
-
+    
+    @IBAction func closeSurvey(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "QuestionsSegue" {
+            let surveyVC = segue.destination as! SurveyVC
+            surveyVC.survey = survey
+        }
+    }
 }

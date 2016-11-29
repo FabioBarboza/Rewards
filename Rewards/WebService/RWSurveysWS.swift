@@ -12,6 +12,10 @@ import Parse
 typealias SURVEY_SUCCESS = (_ result: NSMutableArray) -> ()
 typealias SURVEY_FAILURE = (_ error: NSError) -> ()
 
+typealias QUESTION_SUCCESS = (_ result: [RWQuestion]) -> ()
+typealias QUESTION_FAILURE = (_ error: NSError) -> ()
+
+
 class RWSurveysWS: NSObject {
     
     static func surveys(success: @escaping SURVEY_SUCCESS,
@@ -35,8 +39,8 @@ class RWSurveysWS: NSObject {
     }
     
     static func questions(with surveyID: String,
-                          success: @escaping SURVEY_SUCCESS,
-                          failure: @escaping SURVEY_FAILURE) {
+                          success: @escaping QUESTION_SUCCESS,
+                          failure: @escaping QUESTION_FAILURE) {
         
         let innerQuery = PFQuery(className:"Survey")
         innerQuery.whereKey("objectId", equalTo: surveyID)
@@ -44,10 +48,10 @@ class RWSurveysWS: NSObject {
         query.whereKey("survey", matchesQuery: innerQuery)
         query.findObjectsInBackground { (list, error) in
             if error == nil {
-                let questions = NSMutableArray()
+                var questions = [RWQuestion]()
                 for object in list! {
                     let question = object as! RWQuestion
-                    questions.add(question)
+                    questions.append(question)
                 }
                 success(questions)
             } else {

@@ -31,6 +31,7 @@
 		CBB2B1DD1DC586430087B1FE /* RWUserWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2B1DC1DC586430087B1FE /* RWUserWS.swift */; };
 		CBB2B1E01DC6A31F0087B1FE /* RWSurveysWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2B1DF1DC6A31F0087B1FE /* RWSurveysWS.swift */; };
 		CBB2B1E31DC6D60F0087B1FE /* RWSurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB2B1E21DC6D60F0087B1FE /* RWSurveyCell.swift */; };
+		CBFAC3511DED432A0017B0A5 /* SurveyCompletionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFAC3501DED432A0017B0A5 /* SurveyCompletionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		CBB2B1DE1DC58EC60087B1FE /* Rewards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rewards.entitlements; sourceTree = "<group>"; };
 		CBB2B1DF1DC6A31F0087B1FE /* RWSurveysWS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWSurveysWS.swift; path = WebService/RWSurveysWS.swift; sourceTree = "<group>"; };
 		CBB2B1E21DC6D60F0087B1FE /* RWSurveyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RWSurveyCell.swift; path = "Custom Classes/RWSurveyCell.swift"; sourceTree = "<group>"; };
+		CBFAC3501DED432A0017B0A5 /* SurveyCompletionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCompletionVC.swift; sourceTree = "<group>"; };
 		FCAF6EE20BFE4964FA2465EE /* Pods-Rewards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rewards.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rewards/Pods-Rewards.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				CB4506FA1DAF1BE3004E231C /* ProfileVC.swift */,
 				CB6B8ED51DAF30BC00F094D5 /* SurveyVC.swift */,
 				CB56EFD81DAF0AD800BABC37 /* SurveysVC.swift */,
+				CBFAC3501DED432A0017B0A5 /* SurveyCompletionVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 			files = (
 				CBB2B1E01DC6A31F0087B1FE /* RWSurveysWS.swift in Sources */,
 				CB47FF981DC2B9EA008FE74D /* RWCompany.swift in Sources */,
+				CBFAC3511DED432A0017B0A5 /* SurveyCompletionVC.swift in Sources */,
 				CB47FF9A1DC2BBB8008FE74D /* RWPerson.swift in Sources */,
 				CB98BE251DC3C6AB00843FC6 /* RWAnswer.swift in Sources */,
 				CB6B8ED61DAF30BC00F094D5 /* SurveyVC.swift in Sources */,

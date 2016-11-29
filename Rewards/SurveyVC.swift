@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -18,35 +19,34 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let dataLoaderSegue = "dataLoaderSegue"
     
     var survey: RWSurvey?
-    var questionList = NSMutableArray()
     var optionList = NSMutableArray()
     var currentQuestion = 0
-    var loaded = false
+    
+    var answers = [RWAnswer]()
+    var selectedOption: RWOption?
+    
+    @IBOutlet weak var nextButton: UIButton!
     
     @IBOutlet weak var surveyDeadline: UILabel! {
         didSet {
             surveyDeadline.text = "Termina em 1 dia"
         }
     }
-    
     @IBOutlet weak var surveyReward: UILabel! {
         didSet {
             surveyReward.text = survey?.reward
         }
     }
-    
     @IBOutlet weak var surveyLocation: UILabel! {
         didSet {
             surveyLocation.text = survey?.company?.companyName
         }
     }
-    
     @IBOutlet weak var surveyTitle: UILabel! {
         didSet {
             surveyTitle.text = survey?.title
         }
     }
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView! {
         didSet{
@@ -62,35 +62,37 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = navTitle
-
+        
         loadOptions(to: currentQuestion)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if loaded == true {
-            loadOptions(to: currentQuestion)
+    func loadOptions(to questionNumber: Int) {
+        guard let survey = self.survey,
+            let questions = survey.questions else {
+                return
         }
-    }
-    
-    func loadOptions(to question: Int) {
-        if questionList.count == 0 {
-            loadObjects()
+        
+        if questionNumber + 1 == questions.count {
+            nextButton.setTitle("ENVIAR", for: .normal)
         } else {
-            if let question = questionList[currentQuestion] as? RWQuestion {
-                loading(true)
-                RWSurveysWS.options(with: question.objectId!, success: { (list) in
-                    
-                    self.optionList.removeAllObjects()
-                    self.optionList = list
-                    self.tableView.reloadData()
-                    self.loading(false)
-
-                }, failure: { (error) in
-                    self.loading(false)
-                })
-            } else {
+            nextButton.setTitle("PRÓXIMA PERGUNTA", for: .normal)
+        }
+        
+        if questions.count > questionNumber {
+            let question = questions[questionNumber]
+            loading(true)
+            RWSurveysWS.options(with: question.objectId!, success: { (list) in
                 
-            }
+                self.optionList.removeAllObjects()
+                self.optionList = list
+                self.tableView.reloadData()
+                self.loading(false)
+                self.currentQuestion = questionNumber
+                self.selectedOption = nil
+                
+            }, failure: { (error) in
+                self.loading(false)
+            })
         }
     }
     
@@ -105,7 +107,6 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func loadObjects() {
-        
         self.performSegue(withIdentifier: dataLoaderSegue, sender: nil)
     }
     
@@ -115,8 +116,11 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         if (indexPath.row == 0) {
             let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: questionCellID)! as UITableViewCell
-            
-            let question = questionList[currentQuestion] as! RWQuestion
+            guard let survey = self.survey,
+                let questions = survey.questions else {
+                    return UITableViewCell()
+            }
+            let question = questions[currentQuestion]
             let title = cell.viewWithTag(1) as! UILabel
             title.text = question.label
             
@@ -144,22 +148,42 @@ class SurveyVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedOption = optionList[indexPath.row - 1] as? RWOption
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     //MARK: - Actions
     
-    @IBAction func nextQuestionAction(_ sender: AnyObject) {
-        navigationController!.popViewController(animated: true);
+    @IBAction func closeSurvey(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
-    //MARK: - Navigation
+    @IBAction func nextQuestionAction(_ sender: AnyObject) {
+        
+        guard let survey = survey,
+            let questions = survey.questions,
+            let option = selectedOption else {
+                return
+        }
+        
+        let user = PFUser.current()
+        RWAnswer.store(with: survey,
+                       options: option,
+                       person: RWPerson(className: RWPerson.parseClassName(),
+                                        dictionary: ["person": user?.objectId as Any]),
+                       question: questions[currentQuestion])
+        
+        if currentQuestion == questions.count {
+            performSegue(withIdentifier: "SurveyCompletion", sender: nil)
+        } else {
+            loadOptions(to: currentQuestion + 1)
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == dataLoaderSegue {
-            if let destinationVC = segue.destination as? DataLoaderVC {
-                destinationVC.surveyVC = self
-            }
+        if segue.identifier == "SurveyCompletion" {
+            let surveyVC = segue.destination as! SurveyVC
+            surveyVC.survey = survey
         }
     }
 }

@@ -204,7 +204,7 @@
                                         <rect key="frame" x="0.0" y="268" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JWx-S6-lnC" id="ozU-ym-tgV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This row represent the Survey Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PN-Iz-KUe">
@@ -227,7 +227,7 @@
                                         <rect key="frame" x="0.0" y="338" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lD2-Pb-fTd" id="bdW-g1-8p7">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icz-KJ-KDQ">
@@ -276,21 +276,25 @@
                             <constraint firstItem="o5u-W1-2f7" firstAttribute="centerY" secondItem="8w6-7e-tvS" secondAttribute="centerY" id="u7h-Jz-UK9"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Odo-8i-glb">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="3Np-g3-Paq"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
                         <outlet property="activityIndicator" destination="o5u-W1-2f7" id="A8y-fm-tB3"/>
+                        <outlet property="nextButton" destination="Yov-8c-rY1" id="7wy-V2-229"/>
                         <outlet property="surveyDeadline" destination="QB2-B8-FBl" id="mGb-NM-hD4"/>
                         <outlet property="surveyLocation" destination="azL-Hl-fnb" id="Jac-C0-26A"/>
                         <outlet property="surveyReward" destination="N8U-u8-71n" id="A2y-Rf-y5h"/>
                         <outlet property="surveyTitle" destination="gQG-pk-tf2" id="KZL-Dh-9dj"/>
                         <outlet property="tableView" destination="mfm-Bn-UK5" id="hk0-HG-b1G"/>
-                        <segue destination="JlO-Ps-6Rt" kind="presentation" identifier="dataLoaderSegue" id="JJa-2j-Hlx"/>
+                        <segue destination="kjn-o2-mjA" kind="show" identifier="SurveyCompletion" id="t6W-Ce-0sM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QWs-GH-zAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3853.5999999999999" y="-201.49925037481262"/>
+            <point key="canvasLocation" x="5734" y="-216"/>
         </scene>
         <!--Data LoaderVC-->
         <scene sceneID="Qej-rl-wJC">
@@ -305,7 +309,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carregando dados da pesquisa" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="5VA-Ay-xrO">
-                                <rect key="frame" x="56" y="88" width="263" height="74"/>
+                                <rect key="frame" x="56" y="177" width="263" height="74"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="263" id="G6S-d2-0jH"/>
                                     <constraint firstAttribute="height" constant="74" id="oOP-tV-O3k"/>
@@ -315,10 +319,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gC-UE-WhW">
-                                <rect key="frame" x="30" y="551" width="315" height="60"/>
+                                <rect key="frame" x="30" y="304" width="315" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="FQm-N0-Udp"/>
-                                    <constraint firstAttribute="width" constant="315" id="UIS-mh-od2"/>
+                                    <constraint firstAttribute="width" constant="315" id="5eD-XI-Mh8"/>
+                                    <constraint firstAttribute="height" constant="60" id="vmr-55-rbf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="INICIAR" backgroundImage="btnNext"/>
@@ -327,28 +331,37 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dlP-fF-ghf">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <rect key="frame" x="169" y="404" width="37" height="37"/>
                                 <color key="color" cocoaTouchSystemColor="darkTextColor"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5VA-Ay-xrO" firstAttribute="top" secondItem="bht-PQ-dqL" secondAttribute="bottom" constant="68" id="DVP-zF-jaE"/>
+                            <constraint firstItem="5gC-UE-WhW" firstAttribute="centerX" secondItem="Nes-Wn-wnC" secondAttribute="centerX" id="7sV-5I-9gJ"/>
+                            <constraint firstItem="dlP-fF-ghf" firstAttribute="centerX" secondItem="5gC-UE-WhW" secondAttribute="centerX" id="IKt-CC-qvi"/>
                             <constraint firstItem="5VA-Ay-xrO" firstAttribute="centerX" secondItem="Nes-Wn-wnC" secondAttribute="centerX" id="SQz-GT-OSS"/>
-                            <constraint firstItem="dlP-fF-ghf" firstAttribute="centerY" secondItem="Nes-Wn-wnC" secondAttribute="centerY" id="UUa-IT-Jl4"/>
-                            <constraint firstItem="Qhq-pe-JcC" firstAttribute="top" secondItem="5gC-UE-WhW" secondAttribute="bottom" constant="56" id="a8M-nk-G6o"/>
-                            <constraint firstItem="dlP-fF-ghf" firstAttribute="centerX" secondItem="Nes-Wn-wnC" secondAttribute="centerX" id="bcd-KL-75w"/>
-                            <constraint firstItem="5gC-UE-WhW" firstAttribute="centerX" secondItem="Nes-Wn-wnC" secondAttribute="centerX" id="gld-GA-AbN"/>
+                            <constraint firstItem="dlP-fF-ghf" firstAttribute="top" secondItem="5gC-UE-WhW" secondAttribute="bottom" constant="40" id="Tra-Yb-1l6"/>
+                            <constraint firstItem="5gC-UE-WhW" firstAttribute="top" secondItem="5VA-Ay-xrO" secondAttribute="bottom" constant="53" id="cop-Gd-7AF"/>
+                            <constraint firstItem="5gC-UE-WhW" firstAttribute="centerY" secondItem="Nes-Wn-wnC" secondAttribute="centerY" id="rBn-2o-AsA"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Hen-6h-uOX">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="ap6-X2-c15">
+                            <connections>
+                                <action selector="closeSurvey:" destination="JlO-Ps-6Rt" id="Kk6-2H-U6W"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="dlP-fF-ghf" id="QRf-8K-Hzf"/>
                         <outlet property="btnStart" destination="5gC-UE-WhW" id="Lno-WS-TWm"/>
+                        <outlet property="titleLabel" destination="5VA-Ay-xrO" id="iem-8S-KGL"/>
+                        <segue destination="eKY-zb-anC" kind="show" identifier="QuestionsSegue" id="UYV-Pr-EQb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnY-Bn-HqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4792.8000000000002" y="-201.04947526236884"/>
+            <point key="canvasLocation" x="4792.8000000000002" y="-215.44227886056973"/>
         </scene>
         <!--SurveysVC-->
         <scene sceneID="xxn-2N-VfU">
@@ -367,10 +380,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SurveyCell" rowHeight="170" id="k6D-bo-UVm" customClass="RWSurveyCell" customModule="Rewards" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="170"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k6D-bo-UVm" id="7yv-a1-SLk">
-                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="170"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="McDonalds" translatesAutoresizingMaskIntoConstraints="NO" id="KwE-Pz-RG1">
@@ -474,7 +487,7 @@
                         <outlet property="activityIndicator" destination="qd3-Qy-6vR" id="qjE-yS-A87"/>
                         <outlet property="tableView" destination="hcd-Rn-Nbw" id="SOG-8c-3kH"/>
                         <segue destination="aCS-MM-6ys" kind="show" identifier="ProfileSegue" id="mc3-eF-iJT"/>
-                        <segue destination="eKY-zb-anC" kind="show" identifier="SurveySegue" id="yyI-M4-UqZ"/>
+                        <segue destination="g4e-GT-2C5" kind="presentation" identifier="SurveySegue" id="SH3-CO-zkj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UF4-XC-eOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -497,21 +510,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="uPL-Xq-mln">
-                                    <rect key="frame" x="0.0" y="64" width="1000" height="187"/>
+                                    <rect key="frame" x="0.0" y="64" width="375" height="187"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Da6-QH-0qt">
-                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="187"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="187"/>
                                         </imageView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="PXE-9u-N9y">
-                                            <rect key="frame" x="450" y="26" width="100" height="100"/>
+                                            <rect key="frame" x="137.5" y="26" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="6bc-f0-JTp"/>
                                                 <constraint firstAttribute="height" constant="100" id="wXL-e5-J8m"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fabio Barboza Filho" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eF-89-6fb">
-                                            <rect key="frame" x="8" y="145" width="984" height="20.5"/>
+                                            <rect key="frame" x="8" y="145" width="359" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -532,10 +545,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SurveyCell" rowHeight="170" id="b8h-9J-o0T">
-                                        <rect key="frame" x="0.0" y="215" width="1000" height="170"/>
+                                        <rect key="frame" x="0.0" y="215" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b8h-9J-o0T" id="ctW-yH-yme">
-                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="170"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="McDonalds" translatesAutoresizingMaskIntoConstraints="NO" id="Pzx-CP-lna">
@@ -633,6 +646,106 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRR-s2-lXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="640-pg-8VP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g4e-GT-2C5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="inN-mR-dMe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JlO-Ps-6Rt" kind="relationship" relationship="rootViewController" id="JeM-rt-oQb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ezh-OG-kxP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3853.5999999999999" y="-215.44227886056973"/>
+        </scene>
+        <!--Survey CompletionVC-->
+        <scene sceneID="p2v-71-AJK">
+            <objects>
+                <viewController id="kjn-o2-mjA" customClass="SurveyCompletionVC" customModule="Rewards" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MyI-V3-HlI"/>
+                        <viewControllerLayoutGuide type="bottom" id="447-Fd-mRf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WT5-Rp-Jfw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Obrigado." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="91L-iC-LjE">
+                                <rect key="frame" x="113" y="127" width="150" height="43"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="36"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Codigo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999998807907104" translatesAutoresizingMaskIntoConstraints="NO" id="Ad4-mn-WYM">
+                                <rect key="frame" x="144" y="384" width="88" height="32"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="27"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use o código abaixo para resgatar seu prêmio" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCK-tM-K6g">
+                                <rect key="frame" x="30" y="196" width="315" height="52"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.24313725489999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yl-Yw-hxa">
+                                <rect key="frame" x="30" y="690" width="315" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="5Kd-h2-vxE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="FECHAR" backgroundImage="btnNext"/>
+                                <connections>
+                                    <action selector="completeAction:" destination="kjn-o2-mjA" eventType="touchUpInside" id="5fJ-hT-Auv"/>
+                                    <action selector="startSurvey:" destination="kjn-o2-mjA" eventType="touchUpInside" id="sMt-5e-3hV"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="YE1-rE-Txj">
+                                <rect key="frame" x="169" y="450" width="37" height="37"/>
+                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xCK-tM-K6g" firstAttribute="top" secondItem="91L-iC-LjE" secondAttribute="bottom" constant="25.5" id="1DP-Mf-vXy"/>
+                            <constraint firstItem="Ad4-mn-WYM" firstAttribute="centerX" secondItem="WT5-Rp-Jfw" secondAttribute="centerX" id="72d-WS-64Y"/>
+                            <constraint firstItem="Ad4-mn-WYM" firstAttribute="centerY" secondItem="WT5-Rp-Jfw" secondAttribute="centerY" id="A7k-2L-TSA"/>
+                            <constraint firstItem="91L-iC-LjE" firstAttribute="centerX" secondItem="WT5-Rp-Jfw" secondAttribute="centerX" id="Arj-LT-lD4"/>
+                            <constraint firstAttribute="trailing" secondItem="2Yl-Yw-hxa" secondAttribute="trailing" constant="30" id="DMb-vV-rA1"/>
+                            <constraint firstItem="2Yl-Yw-hxa" firstAttribute="leading" secondItem="WT5-Rp-Jfw" secondAttribute="leading" constant="30" id="FFz-qO-cwg"/>
+                            <constraint firstItem="YE1-rE-Txj" firstAttribute="top" secondItem="Ad4-mn-WYM" secondAttribute="bottom" constant="34.5" id="FOF-eg-m0h"/>
+                            <constraint firstItem="YE1-rE-Txj" firstAttribute="centerX" secondItem="WT5-Rp-Jfw" secondAttribute="centerX" id="Pq9-DJ-xfU"/>
+                            <constraint firstItem="xCK-tM-K6g" firstAttribute="leading" secondItem="WT5-Rp-Jfw" secondAttribute="leading" constant="30" id="gLW-sl-lAE"/>
+                            <constraint firstItem="447-Fd-mRf" firstAttribute="top" secondItem="2Yl-Yw-hxa" secondAttribute="bottom" constant="50" id="sxe-d2-0HC"/>
+                            <constraint firstItem="91L-iC-LjE" firstAttribute="top" secondItem="MyI-V3-HlI" secondAttribute="bottom" constant="63" id="ue4-lF-Jxi"/>
+                            <constraint firstAttribute="trailing" secondItem="xCK-tM-K6g" secondAttribute="trailing" constant="30" id="xh0-jO-8dc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cPL-0V-5Xa">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="nDE-OI-Ns4">
+                            <connections>
+                                <action selector="closeSurvey:" destination="kjn-o2-mjA" id="K1F-uW-LDG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="YE1-rE-Txj" id="IO0-LX-bjS"/>
+                        <outlet property="btnStart" destination="2Yl-Yw-hxa" id="dYZ-ak-yZJ"/>
+                        <outlet property="codeLabel" destination="Ad4-mn-WYM" id="NoG-SW-BSA"/>
+                        <outlet property="complete" destination="2Yl-Yw-hxa" id="Egh-34-tiy"/>
+                        <outlet property="titleLabel" destination="91L-iC-LjE" id="CJD-Lv-s7w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JgG-v7-fG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6685.6000000000004" y="-215.44227886056973"/>
         </scene>
     </scenes>
     <resources>

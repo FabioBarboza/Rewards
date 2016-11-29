@@ -90,7 +90,8 @@ class SurveysVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == surveySegue {
-            let surveyVC = segue.destination as! SurveyVC
+            let navController = segue.destination as! UINavigationController
+            let surveyVC = navController.viewControllers.first as! DataLoaderVC
             let indexPath = sender as! IndexPath
             surveyVC.survey = surveyList[indexPath.row] as? RWSurvey
         }
