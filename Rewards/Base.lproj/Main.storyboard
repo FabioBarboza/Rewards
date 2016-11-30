@@ -481,7 +481,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="atx-Dl-ato">
                                 <rect key="frame" x="16" y="6" width="85" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="btnProfile"/>
+                                <state key="normal" image="btnProfile"/>
                                 <connections>
                                     <action selector="showProfile:" destination="f9I-yr-TH9" eventType="touchUpInside" id="9TF-Le-DpI"/>
                                 </connections>

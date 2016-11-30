@@ -51,6 +51,9 @@ class SurveysVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSou
                 }
                 s.isNear = self.isNear(survey: s)
             }
+            let sort = NSSortDescriptor(key: "isNear", ascending: false)
+            let sortedArray = self.surveyList.sortedArray(using: [sort])
+            self.surveyList = NSMutableArray(array: sortedArray)
             self.tableView.reloadData()
             self.loading(false)
         }) { (error) in
