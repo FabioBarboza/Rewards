@@ -39,8 +39,12 @@ class SurveyCompletionVC: UIViewController {
         content.contentTitle = "Rewards - Pesquisas inteligentes"
         content.contentDescription = "Responda pesquisas rápidas e ganhe promoções exclusivas nas suas lojas e restaurantes favoritos."
         let shareButton = FBSDKShareButton()
-        shareButton.shareContent = content;
-        shareButton.center = view.center;
+        shareButton.shareContent = content
+        
+        var viewCenter = view.center
+        viewCenter.y += 50
+        
+        shareButton.center = viewCenter
         view.addSubview(shareButton)
     }
     
