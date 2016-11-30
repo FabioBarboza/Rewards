@@ -17,6 +17,8 @@ class RWSurvey: PFObject, PFSubclassing {
     @NSManaged var reward: String?
     @NSManaged var showReward: Bool
     @NSManaged var company: RWCompany?
+    @NSManaged var isNear: Bool
+    @NSManaged var locationInMeters: Double
     
     public static func parseClassName() -> String {
         return "Survey"

@@ -8,8 +8,9 @@
 
 import UIKit
 import Parse
+import CoreLocation
 
-class SurveysVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SurveysVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
 
     let navTitle = "Pesquisas"
     let surveyCellID = "SurveyCell"
@@ -19,6 +20,8 @@ class SurveysVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     let surveyQueryError = "Occured an error trying to get the surveys"
     
     var surveyList = NSMutableArray()
+    let locationManager = CLLocationManager()
+    var userLocation: CLLocationCoordinate2D?
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView! {
@@ -32,7 +35,7 @@ class SurveysVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = navTitle
-        
+        requestLocation()
         loadObjects()
     }
     
@@ -42,6 +45,12 @@ class SurveysVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         loading(true)
         RWSurveysWS.surveys(success: { (list) in
             self.surveyList = NSMutableArray(array: list)
+            for survey in self.surveyList {
+                guard let s = survey as? RWSurvey else {
+                    break
+                }
+                s.isNear = self.isNear(survey: s)
+            }
             self.tableView.reloadData()
             self.loading(false)
         }) { (error) in
@@ -70,16 +79,32 @@ class SurveysVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let cell:RWSurveyCell = tableView.dequeueReusableCell(withIdentifier: surveyCellID)! as! RWSurveyCell
         let survey = surveyList[indexPath.row] as! RWSurvey
-        
+        if survey.isNear {
+            cell.surveyImage?.alpha = 1.0
+            cell.startButton.isHidden = false
+        } else {
+            cell.startButton.isHidden = true
+            cell.surveyImage?.alpha = 0.5
+        }
         cell.surveyTitle.text = survey.title
-        cell.surveyLocation.text = survey.company?.companyName
+        if let name = survey.company?.companyName {
+            cell.surveyLocation.text = "\(name)" + " " + "\(survey.locationInMeters)" + "km"
+        } else {
+            cell.surveyLocation.text = "\(survey.locationInMeters)" + "km"
+        }
         cell.surveyReward.text = survey.reward
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: surveySegue, sender: indexPath)
+        tableView .deselectRow(at: indexPath, animated: true)
+        guard let survey = self.surveyList[indexPath.row] as? RWSurvey else {
+            return
+        }
+        if survey.isNear {
+            performSegue(withIdentifier: surveySegue, sender: indexPath)
+        }
     }
     
     //MARK: - Navigation
@@ -96,5 +121,44 @@ class SurveysVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             surveyVC.survey = surveyList[indexPath.row] as? RWSurvey
         }
     }
-
+    
+    //MARK: - Location
+    
+    func requestLocation() {
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let loc = manager.location?.coordinate else {
+            return
+        }
+        if userLocation == nil {
+            self.tableView.reloadData()
+        }
+        userLocation = loc
+        print("locations = \(loc.latitude) \(loc.longitude)")
+    }
+    
+    func isNear(survey: RWSurvey) -> Bool {
+        guard let surveyLatitude = survey.company?.geoPoint?.latitude,
+            let surveyLongitude = survey.company?.geoPoint?.longitude,
+            let location = userLocation else {
+                return false
+        }
+        let userLoc = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        let surveyLoc = CLLocation(latitude: surveyLatitude, longitude: surveyLongitude)
+        let distance = userLoc.distance(from: surveyLoc)
+        let kmValue = distance / 1000
+        survey.locationInMeters = kmValue.roundTo(places: 1)
+        if distance <= 2000 {
+            return true
+        }
+        return false
+    }
 }

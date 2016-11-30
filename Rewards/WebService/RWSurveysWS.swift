@@ -28,7 +28,6 @@ class RWSurveysWS: NSObject {
         query.includeKey("company")
         query.findObjectsInBackground { (list, error) in
             if error == nil {
-                
                 let surveys = NSMutableArray()
                 for object in list! {
                     let survey = object as! RWSurvey

@@ -10,6 +10,7 @@ import UIKit
 
 class RWSurveyCell: UITableViewCell {
     
+    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var surveyImage: UIImageView!
     @IBOutlet weak var surveyTitle: UILabel!
     @IBOutlet weak var surveyDeadline: UILabel!
